@@ -7,8 +7,8 @@ import fs from "fs";
 
 /*
  * In this first codeblock, all we are doing is creating a two-peer PearDrive
- * network. If you'd like a breakdown of this process, check the two-peer-network
- * example project located in (~/two-peer-network).
+ * network. If you'd like a breakdown of this process, check the
+ * two-peer-network example project located in (~/two-peer-network).
  */
 const __filename = safeFileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
