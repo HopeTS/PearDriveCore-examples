@@ -1,0 +1,60 @@
+{
+  "name": "file-transfers",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "pear": {
+    "name": "file-transfers",
+    "type": "terminal"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:node": "node index.js",
+    "start:pear": "pear run -d ."
+  },
+  "imports": {
+    "fs": {
+      "bare": "bare-fs",
+      "default": "fs"
+    },
+    "fs/*": {
+      "bare": "bare-fs/*",
+      "default": "fs/*"
+    },
+    "path": {
+      "bare": "bare-path",
+      "default": "path"
+    },
+    "path/*": {
+      "bare": "bare-path/*",
+      "default": "path/*"
+    },
+    "process": {
+      "bare": "bare-process",
+      "default": "process"
+    },
+    "process/*": {
+      "bare": "bare-process/*",
+      "default": "process/*"
+    },
+    "url": {
+      "bare": "bare-url",
+      "default": "url"
+    },
+    "url/*": {
+      "bare": "bare-url/*",
+      "default": "url/*"
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@peardrive/core": "^1.5.0",
+    "bare-fs": "^4.3.3",
+    "bare-path": "^3.0.0",
+    "bare-process": "^4.2.1",
+    "bare-url": "^2.2.2"
+  }
+}
