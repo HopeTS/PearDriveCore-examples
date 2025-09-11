@@ -13,11 +13,9 @@ export function safeFileURLToPath(url) {
 }
 
 /*
- * Creating a network
- *
- * In order to connect PearDrive instances, there needs to be a networkKey. We
- * can create a new one with createNetwork(), or join an existing one with
- * joinNetwork(<network key>).
+ * In this first codeblock, all we are doing is creating a two-peer PearDrive
+ * network. If you'd like a breakdown of this process, check the two-peer-network
+ * example project located in (~/two-peer-network).
  */
 const __filename = safeFileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
