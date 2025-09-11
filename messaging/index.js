@@ -3,14 +3,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import fs from "fs";
 
-/** Compat fileURLToPath with Pear Runtime */
-export function safeFileURLToPath(url) {
-  if (url.startsWith("pear://")) {
-    const path = url.replace(/^pear:\/\/[^/]+/, ".");
-    return path;
-  }
-  return fileURLToPath(url);
-}
+// Helper functions are at the bottom of the file for easier reading :)
 
 /*
  * In this first codeblock, all we are doing is creating a two-peer PearDrive
@@ -69,12 +62,16 @@ console.log("Peer 1 sent message:", MESSAGE_CONTENT);
  * receive it as a response. We will create and listen for a new message type,
  * "question", and send a message of that type from peer1 to peer2, and log the
  * response.
+ *
+ * NOTE: The message types are arbitrary. You can create and listen for any
+ * number of message types you want, and they can be named anything.
  */
 const MESSAGE_TYPE_2 = "question";
 peer2.listen(MESSAGE_TYPE_2, (message) => {
   console.log("Peer 2 received question:", message);
   return "Pay taxes and die!";
 });
+
 const response = await peer1.sendMessage(
   peer2.publicKey,
   MESSAGE_TYPE_2,
@@ -86,3 +83,16 @@ console.log("Peer 1 received this answer to the question:", response);
 await peer1.close();
 await peer2.close();
 console.log("Peers closed");
+
+////////////////////////////////////////////////////////////////////////////////
+// Helper functions
+////////////////////////////////////////////////////////////////////////////////
+
+/** Compat fileURLToPath with Pear Runtime */
+export function safeFileURLToPath(url) {
+  if (url.startsWith("pear://")) {
+    const path = url.replace(/^pear:\/\/[^/]+/, ".");
+    return path;
+  }
+  return fileURLToPath(url);
+}

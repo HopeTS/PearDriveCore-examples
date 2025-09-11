@@ -66,8 +66,10 @@ createFile({
 
 // Wait for peer1 to notice the new file, then have peer2 download it.
 await new Promise((resolve) => setTimeout(resolve, 2000));
+
 await peer2.downloadFileFromPeer(peer1.publicKey, FILE_1_NAME);
 console.log(`Peer 2 downloaded file: ${FILE_1_NAME}`);
+
 const downloadedFilePath = path.join(PEER2_WATCH, FILE_1_NAME);
 const downloadedFileContents = fs.readFileSync(downloadedFilePath, "utf-8");
 console.log("Downloaded file contents:", downloadedFileContents);

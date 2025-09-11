@@ -3,16 +3,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import fs from "fs";
 
-/** Compat fileURLToPath with Pear Runtime */
-export function safeFileURLToPath(url) {
-  if (url.startsWith("pear://")) {
-    // Strip the pear:// scheme
-    // dev/index.js → ./index.js (relative path)
-    const path = url.replace(/^pear:\/\/[^/]+/, ".");
-    return path;
-  }
-  return fileURLToPath(url);
-}
+// Helper functions are at the bottom of the file for easier reading :)
 
 /*
  * Initializing a PearDrive instance.
@@ -34,9 +25,20 @@ if (fs.existsSync(TMP_DIR)) {
   fs.rmSync(TMP_DIR, { recursive: true, force: true });
 }
 
-// Now we create the instance
+// Now we create the instance.
+//
+// PEER1_CORESTORE is where all the 'core' data is stored. Just set this as an
+// empty folder path, and don't touch it! It's where all the under-the-hood
+// stuff PearDrive does is stored.
+//
+// PEER1_WATCH is the folder that PearDrive is 'watching' for changes, and
+// where it will download files to. You can set this to any folder you want,
+// but for this example, we are just going to make a new empty folder.
+// **Keep in mind, all peers on the network will have access to all files in
+// this folder, so don't put anything sensitive in here.**
 const PEER1_CORESTORE = path.join(TMP_DIR, "peer1", "corestore");
 const PEER1_WATCH = path.join(TMP_DIR, "peer1", "watch");
+
 const peer1 = new PearDrive({
   corestorePath: PEER1_CORESTORE,
   watchPath: PEER1_WATCH,
@@ -52,7 +54,7 @@ await peer1.ready();
 console.log("Peer 1 is ready");
 
 /*
- *Creating a network
+ * Creating a network
  *
  * In order to connect PearDrive instances, there needs to be a networkKey. We
  * can create a new one with createNetwork(), or join an existing one with
@@ -66,6 +68,7 @@ console.log("Peer 1 joined network:", peer1.networkKey);
 // anywhere in the world.
 const PEER2_CORESTORE = path.join(TMP_DIR, "peer2", "corestore");
 const PEER2_WATCH = path.join(TMP_DIR, "peer2", "watch");
+
 const peer2 = new PearDrive({
   corestorePath: PEER2_CORESTORE,
   watchPath: PEER2_WATCH,
@@ -85,3 +88,18 @@ console.log("Peer 2 joined network:", peer2.networkKey);
 await peer1.close();
 await peer2.close();
 console.log("Peers closed");
+
+////////////////////////////////////////////////////////////////////////////////
+// Helper functions
+////////////////////////////////////////////////////////////////////////////////
+
+/** Compat fileURLToPath with Pear Runtime */
+export function safeFileURLToPath(url) {
+  if (url.startsWith("pear://")) {
+    // Strip the pear:// scheme
+    // dev/index.js → ./index.js (relative path)
+    const path = url.replace(/^pear:\/\/[^/]+/, ".");
+    return path;
+  }
+  return fileURLToPath(url);
+}
