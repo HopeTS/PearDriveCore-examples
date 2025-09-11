@@ -51,9 +51,11 @@ console.log("Network created with peers:");
 console.log("Peer 1 Network Key:", peer1.networkKey);
 console.log("Peer 2 Network Key:", peer2.networkKey);
 
-// Here we are creating a custom message type, "text". Then, we are going to
-// "listen" for messages of that type on peer2, and send a message of that type
-// from peer1 to peer2.
+/*
+ * Here we are creating a custom message type, "text". Then, we are going to
+ * "listen" for messages of that type on peer2, and send a message of that type
+ * from peer1 to peer2.
+ */
 const MESSAGE_TYPE = "text";
 peer2.listen(MESSAGE_TYPE, (message) => {
   console.log("Peer 2 received message:", message);
@@ -63,6 +65,24 @@ peer2.listen(MESSAGE_TYPE, (message) => {
 const MESSAGE_CONTENT = "Hello from Peer 1!";
 await peer1.sendMessage(peer2.publicKey, MESSAGE_TYPE, MESSAGE_CONTENT);
 console.log("Peer 1 sent message:", MESSAGE_CONTENT);
+
+/*
+ * You can also return a value from the listener function, and the sender will
+ * receive it as a response. We will create and listen for a new message type,
+ * "question", and send a message of that type from peer1 to peer2, and log the
+ * response.
+ */
+const MESSAGE_TYPE_2 = "question";
+peer2.listen(MESSAGE_TYPE_2, (message) => {
+  console.log("Peer 2 received question:", message);
+  return "Pay taxes and die!";
+});
+const response = await peer1.sendMessage(
+  peer2.publicKey,
+  MESSAGE_TYPE_2,
+  "What is the answer to life, the universe, and everything?"
+);
+console.log("Peer 1 received this answer to the question:", response);
 
 // Close drives at the end of the process
 await peer1.close();
