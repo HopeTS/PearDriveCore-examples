@@ -57,8 +57,8 @@ console.log("Peer 1 is ready");
  * Creating a network
  *
  * In order to connect PearDrive instances, there needs to be a networkKey. We
- * can create a new one with createNetwork(), or join an existing one with
- * joinNetwork(<network key>).
+ * can create a new one with joinNetwork() [without any arguments], or join an
+ * existing one with joinNetwork(<network key>).
  */
 await peer1.joinNetwork();
 console.log("Peer 1 joined network:", peer1.networkKey);
