@@ -51,9 +51,8 @@ console.log("Peer 2 Network Key:", peer2.networkKey);
  * In this example, we are just using the file name since it was created locally
  * and peer2 already has access to the name.
  *
- * If you want to learn the dynamic
- * method of searching for files on the network, check out the 'view-data'
- * example project located in (~/view-data).
+ * If you want to learn the dynamic method of searching for files on the
+ * network, check out the 'view-data' example project located in (~/view-data).
  */
 const FILE_1_NAME = "example.txt";
 const FILE_1_CONTENTS =
