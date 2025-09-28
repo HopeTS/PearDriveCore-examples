@@ -76,8 +76,9 @@ peer1.on(EVENT.SAVE_DATA_UPDATE, (newSaveData) => {
 /*
  * Now we are going to close out peer1, and then reload it. This process is the
  * same for both methods, since they both create a save file that can be read
- * back in. There also won't be any difference between the two save files in this
- * example, since we aren't doing any downloads that would change the save data.
+ * back in. There also won't be any difference between the two save files in
+ * this example, since we aren't doing any downloads that would change the save
+ * data.
  */
 
 // Close out peer1
