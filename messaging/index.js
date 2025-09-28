@@ -47,6 +47,15 @@ console.log("Peer 2 Network Key:", peer2.networkKey);
  * "listen" for messages of that type on peer2, and send a message of that type
  * from peer1 to peer2.
  */
+
+const MSG_TYPES = ["CHAT", "TURN"];
+peer2.listen(MSG_TYPES[0], (message) => {
+  console.log("CHAT MESSAGE:", message);
+});
+peer2.listen(MSG_TYPES[1], (message) => {
+  console.log("TURN MESSAGE:", message);
+});
+
 const MESSAGE_TYPE = "text";
 peer2.listen(MESSAGE_TYPE, (message) => {
   console.log("Peer 2 received message:", message);
