@@ -19,3 +19,5 @@ You can run these projects by navigating to their folders, installing dependenci
 - **~/saving-peardrive** - How to save and reload a PearDrive instance.
 
 - **~/view-data** - View information about peers and files on the network.
+
+- **~/event-listeners** - Learn how to use event listeners to create a responsive app that will react to dynamic changes on the PearDrive network.
