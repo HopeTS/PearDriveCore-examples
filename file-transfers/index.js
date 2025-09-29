@@ -54,6 +54,8 @@ console.log("Peer 2 Network Key:", peer2.networkKey);
  * If you want to learn the dynamic method of searching for files on the
  * network, check out the 'view-data' example project located in (~/view-data).
  */
+
+// Create a file in peer1's watchPath
 const FILE_1_NAME = "example.txt";
 const FILE_1_CONTENTS =
   "This is an example file created in peer1's watch folder.";
@@ -66,9 +68,11 @@ createFile({
 // Wait for peer1 to notice the new file, then have peer2 download it.
 await new Promise((resolve) => setTimeout(resolve, 2000));
 
+// Download file
 await peer2.downloadFileFromPeer(peer1.publicKey, FILE_1_NAME);
 console.log(`Peer 2 downloaded file: ${FILE_1_NAME}`);
 
+// Log the contents of the downloaded file to verify it worked
 const downloadedFilePath = path.join(PEER2_WATCH, FILE_1_NAME);
 const downloadedFileContents = fs.readFileSync(downloadedFilePath, "utf-8");
 console.log("Downloaded file contents:", downloadedFileContents);

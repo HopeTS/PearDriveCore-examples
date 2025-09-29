@@ -51,7 +51,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@peardrive/core": "^1.6.0",
+    "@peardrive/core": "^2.0.0",
     "bare-fs": "^4.3.3",
     "bare-path": "^3.0.0",
     "bare-process": "^4.2.1",
