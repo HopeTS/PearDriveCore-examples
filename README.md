@@ -12,7 +12,7 @@ You can run these projects by navigating to their folders, installing dependenci
 
 - **[~/two-peer-network](two-peer-network/index.js)** - Breaks down how to create a network of PearDrive instances
 
-- **[~/messaging](messagins/index.js)** - Breaks down the messaging system, for arbitrary communication between PearDrive instances on the same network.
+- **[~/messaging](messaging/index.js)** - Breaks down the messaging system, for arbitrary communication between PearDrive instances on the same network.
 
 - **[~/file-transfers](file-transfers/index.js)** - Breaks down how transferring files between peers on the network works.
 
