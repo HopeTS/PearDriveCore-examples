@@ -6,7 +6,7 @@ import fs from "fs";
 // Helper functions are at the bottom of the file for easier reading :)
 
 /*
- * In this first codebloack, all we are doing is creating a PearDrive instance.
+ * In this first codeblock, all we are doing is creating a PearDrive instance.
  * If you'd like a breakdown of this process, check the two-peer-network
  * example project located in (~/two-peer-network).
  */
