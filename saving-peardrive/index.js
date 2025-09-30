@@ -88,6 +88,11 @@ console.log("Peer 1 closed.");
 
 // Now let's grab the save data from the first method
 const savedData1 = JSON.parse(fs.readFileSync(SAVE_1_PATH));
+
+// To reload a PearDrive instance from save data, you just pass the saved
+// data to the PearDrive constructor, and then ready() and joinNetwork() as
+// normal. You should always joinNetwork without an argument when reloading,
+// since the network key is already stored in the save data.
 const reloadedPeer1Static = new PearDrive(savedData1);
 await reloadedPeer1Static.ready();
 await reloadedPeer1Static.joinNetwork();
