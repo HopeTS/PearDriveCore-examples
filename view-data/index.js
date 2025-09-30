@@ -51,18 +51,18 @@ console.log("");
  *  1. Listen for events
  *  2. Query the network state
  *
- * In this example, we will do both. Let's start by just showing basic
- * information about the peers on the network
+ * In this example, we will do both.
  */
+
+// Show basic peer information from both peers. Peer1 will show peer2, and vice
+// versa.
 const peer1Info1 = peer1.listPeers();
 const peer2Info1 = peer2.listPeers();
 console.log("Peer 1 peers list info:", peer1Info1);
 console.log("Peer 2 peers list info:", peer2Info1);
 console.log("");
 
-// As you can see, both peers are listing one peer. The peer listed by
-// peer1 has the peer2 public key, and vice versa.
-
+// Show how the peers peerList data correspond to each other's local data.
 console.log(
   "Peer1's public key:",
   peer1.publicKey,
@@ -79,9 +79,10 @@ console.log(
 console.log("");
 
 /*
- * Now let's look at the file system. We will add a file to peer1's watchPath
- * and then check the file system state on both peer1 and peer2.
+ * Now let's look at data pertaining to the network file system
  */
+
+// Create a file in peer1's watchPath
 const FILE_1_NAME = "example.txt";
 const FILE_1_CONTENTS =
   "This is an example file created in peer1's watch folder.";
