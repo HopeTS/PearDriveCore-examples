@@ -25,20 +25,24 @@ if (fs.existsSync(TMP_DIR)) {
   fs.rmSync(TMP_DIR, { recursive: true, force: true });
 }
 
-// Now we create the instance.
-//
+/*
+ * You need two folder locations for each PearDrive instance: corestorePath and
+ * watchPath. Here we create the folder paths and initialize peer1.
+ */
+
 // PEER1_CORESTORE is where all the 'core' data is stored. Just set this as an
 // empty folder path, and don't touch it! It's where all the under-the-hood
 // stuff PearDrive does is stored.
-//
+const PEER1_CORESTORE = path.join(TMP_DIR, "peer1", "corestore");
+
 // PEER1_WATCH is the folder that PearDrive is 'watching' for changes, and
 // where it will download files to. You can set this to any folder you want,
 // but for this example, we are just going to make a new empty folder.
 // **Keep in mind, all peers on the network will have access to all files in
 // this folder, so don't put anything sensitive in here.**
-const PEER1_CORESTORE = path.join(TMP_DIR, "peer1", "corestore");
 const PEER1_WATCH = path.join(TMP_DIR, "peer1", "watch");
 
+// Now we can create the PearDrive instance with those two folder paths.
 const peer1 = new PearDrive({
   corestorePath: PEER1_CORESTORE,
   watchPath: PEER1_WATCH,
@@ -55,20 +59,19 @@ console.log("Peer 1 is ready");
 
 /*
  * Creating a network
- *
- * In order to connect PearDrive instances, there needs to be a networkKey. We
- * can create a new one with joinNetwork() [without any arguments], or join an
- * existing one with joinNetwork(<network key>).
  */
+
+// In order to connect PearDrive instances, there needs to be a networkKey. We
+// can create a new one with joinNetwork() [without any arguments], or join an
+// existing one with joinNetwork(<network key>).
 await peer1.joinNetwork();
 console.log("Peer 1 joined network:", peer1.networkKey);
 
-// Now we will make a second peer. This is a local peer, but if you share the
-// network key via qr code, link, or other out-of-band method, it could be
-// anywhere in the world.
+// Now we will go through the same process as peer1 to create peer2. This is a
+// local peer, but if you share the network key via qr code, link, or other
+// out-of-band method, it could be anywhere in the world.
 const PEER2_CORESTORE = path.join(TMP_DIR, "peer2", "corestore");
 const PEER2_WATCH = path.join(TMP_DIR, "peer2", "watch");
-
 const peer2 = new PearDrive({
   corestorePath: PEER2_CORESTORE,
   watchPath: PEER2_WATCH,
@@ -76,7 +79,6 @@ const peer2 = new PearDrive({
     logToConsole: false,
   },
 });
-
 await peer2.ready();
 console.log("Peer 2 is ready");
 
