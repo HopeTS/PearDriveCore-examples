@@ -36,6 +36,7 @@ await peer1.joinNetwork();
 console.log("Peer 1 is ready");
 
 // Save the network key for later
+const ORIGINAL_PUBLIC_KEY = peer1.publicKey;
 const ORIGINAL_NETWORK_KEY = peer1.networkKey;
 
 /*
@@ -92,10 +93,14 @@ await reloadedPeer1Static.ready();
 await reloadedPeer1Static.joinNetwork();
 console.log("");
 console.log("Peer 1 reloaded from static save data is ready.");
+console.log("Original public key:", ORIGINAL_PUBLIC_KEY);
+console.log("Reloaded public key:", reloadedPeer1Static.publicKey);
+console.log("---");
 console.log("Original network key:", ORIGINAL_NETWORK_KEY);
 console.log("Reloaded network key:", reloadedPeer1Static.networkKey);
 console.log(
-  "^ These two keys match because this is the same peer instance reloaded."
+  "^ These two sets of keys match because this is the same peer instance \
+  reloaded."
 );
 console.log("");
 
