@@ -34,6 +34,7 @@ if (fs.existsSync(TMP_DIR)) {
 // empty folder path, and don't touch it! It's where all the under-the-hood
 // stuff PearDrive does is stored.
 const PEER1_CORESTORE = path.join(TMP_DIR, "peer1", "corestore");
+fs.mkdirSync(PEER1_CORESTORE, { recursive: true });
 
 // PEER1_WATCH is the folder that PearDrive is 'watching' for changes, and
 // where it will download files to. You can set this to any folder you want,
@@ -41,6 +42,7 @@ const PEER1_CORESTORE = path.join(TMP_DIR, "peer1", "corestore");
 // **Keep in mind, all peers on the network will have access to all files in
 // this folder, so don't put anything sensitive in here.**
 const PEER1_WATCH = path.join(TMP_DIR, "peer1", "watch");
+fs.mkdirSync(PEER1_WATCH, { recursive: true });
 
 // Now we can create the PearDrive instance with those two folder paths.
 const peer1 = new PearDrive({
@@ -72,6 +74,8 @@ console.log("Peer 1 joined network:", peer1.networkKey);
 // out-of-band method, it could be anywhere in the world.
 const PEER2_CORESTORE = path.join(TMP_DIR, "peer2", "corestore");
 const PEER2_WATCH = path.join(TMP_DIR, "peer2", "watch");
+fs.mkdirSync(PEER2_CORESTORE, { recursive: true });
+fs.mkdirSync(PEER2_WATCH, { recursive: true });
 const peer2 = new PearDrive({
   corestorePath: PEER2_CORESTORE,
   watchPath: PEER2_WATCH,
