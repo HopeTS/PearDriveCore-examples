@@ -24,6 +24,8 @@ if (fs.existsSync(TMP_DIR)) {
 // Initialize the PearDrive instance
 const PEER1_CORESTORE = path.join(TMP_DIR, "peer1", "corestore");
 const PEER1_WATCH = path.join(TMP_DIR, "peer1", "watch");
+fs.mkdirSync(PEER1_CORESTORE, { recursive: true });
+fs.mkdirSync(PEER1_WATCH, { recursive: true });
 const peer1 = new PearDrive({
   corestorePath: PEER1_CORESTORE,
   watchPath: PEER1_WATCH,
@@ -110,7 +112,7 @@ console.log("Original network key:", ORIGINAL_NETWORK_KEY);
 console.log("Static save peer1 network key:", staticSavePeer1.networkKey);
 console.log(
   "^ (These two sets of keys match because this is the same peer instance \
-  reloaded.)"
+reloaded.)"
 );
 // As you can see here though, because we used the static save method, the relay
 // mode is not activated, even though we activated it before closing the peer.
@@ -137,6 +139,10 @@ console.log("Dynamic save peer1 public key:", dynamicSavePeer1.publicKey);
 console.log("---");
 console.log("Original network key:", ORIGINAL_NETWORK_KEY);
 console.log("Dynamic save peer1 network key:", dynamicSavePeer1.networkKey);
+
+// Close peers
+await dynamicSavePeer1.close();
+console.log("Dynamic save peer1 closed.");
 
 ////////////////////////////////////////////////////////////////////////////////
 // Helper functions
