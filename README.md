@@ -1,8 +1,14 @@
 # PearDriveCore development basic examples
 
-> PearDriveCore is compatible with node.js and Pear Runtime environments. You can look in the package.json of an example project to see how mapping the node.js and Bare shims, which is necessary for running in Pear Runtime.
+> Tutorials showcasing the features of PearDrive Core
 
-🏗️ Up to date as of core 2.0.3
+[![AGPL v3 License](https://img.shields.io/badge/license-AGPL%20v3-blue.svg)](./LICENSE)
+
+> 🏗️ Up to date as of core 2.0.3
+
+PearDriveCore is compatible with node.js and Pear Runtime environments. You can look in the package.json of an example project to see how mapping the node.js and Bare shims, which is necessary for running in Pear Runtime.
+
+## Getting Started
 
 You can run these projects by navigating to their folders, installing dependencies, and running "npm run start:node" for a Node.js environment or running "npm run start:pear" for a Pear Runtime environment.
 
