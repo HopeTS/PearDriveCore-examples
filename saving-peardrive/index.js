@@ -148,7 +148,14 @@ console.log("Dynamic save peer1 closed.");
 // Helper functions
 ////////////////////////////////////////////////////////////////////////////////
 
-/** Compat fileURLToPath with Pear Runtime */
+/**
+ * Compat fileURLToPath with Pear Runtime.
+ *
+ * DISCLAIMER: This workaround isn't generally  recommended, because if you are
+ * deploying from pear in pear runtime,  'import.meta.url' won't refer to a file
+ * on disk. But for the sake of this  example, it works because we have the
+ * code running locally.
+ */
 export function safeFileURLToPath(url) {
   if (url.startsWith("pear://")) {
     // Strip the pear:// scheme
