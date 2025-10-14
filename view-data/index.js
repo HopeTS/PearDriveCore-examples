@@ -51,7 +51,9 @@ console.log("");
  *  1. Listen for events
  *  2. Query the network state
  *
- * In this example, we will do both.
+ * In this example, we will be looking at direct queries. To learn more about
+ * event listeners, check out the 'event-listeners' example project located in
+ * (~/event-listeners).
  */
 
 // Show basic peer information from both peers. Peer1 will show peer2, and vice
